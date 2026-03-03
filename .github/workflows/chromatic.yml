@@ -1,0 +1,40 @@
+name: Chromatic
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  chromatic:
+    name: Publish to Chromatic
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          # Full git history lets Chromatic detect changed stories accurately
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Publish to Chromatic
+        uses: chromaui/action@latest
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          # On PRs: return as soon as the build is uploaded so CI doesn't
+          # block — Chromatic reports results back to GitHub directly.
+          exitOnceUploaded: ${{ github.event_name == 'pull_request' }}
+          # Fail the workflow if Chromatic detects visual regressions
+          exitZeroOnChanges: false

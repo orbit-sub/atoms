@@ -1,0 +1,180 @@
+/*
+ * ds-alert — Design System Alert / Banner
+ * Based on: Subscribili Design System v1.2 | node 567:5383
+ *
+ * BEM structure:
+ *   .ds-alert                    Block
+ *   .ds-alert--{variant}         Variant modifier (info/warning/error/success/discovery/neutral)
+ *   .ds-alert--dismissible       Dismissible modifier (close button visible)
+ *   .ds-alert--has-title         When an optional title is rendered
+ *   .ds-alert__body              Flex-1 wrapper around content
+ *   .ds-alert__content           Inner row: icon + text group
+ *   .ds-alert__icon              Icon wrapper (20×20)
+ *   .ds-alert__text              Text column wrapper
+ *   .ds-alert__title             Optional bold heading
+ *   .ds-alert__description       Main message paragraph
+ *   .ds-alert__close             Close (×) button
+ *
+ * Layout anatomy (direct from Figma):
+ *   [border-left:2px] [icon 20px] [text flex-1] [gap:16px] [×btn 20px] [pr:16px]
+ *   Outer py: 2px  |  Inner (content) py: 8px  |  Inner pl: 16px
+ */
+
+/* ── Base ─────────────────────────────────────────────────────────────────── */
+.ds-alert {
+  display:     flex;
+  align-items: center;
+  gap:         var(--spacing-xl);                      /* 16px — gap to close button */
+  padding:     var(--spacing-xxs) var(--spacing-xl)    /* 2px 16px …              */
+               var(--spacing-xxs) 0;                   /* … 2px 0                 */
+  border-left: 2px solid;
+  width:       100%;
+  box-sizing:  border-box;
+}
+
+/* ── Body ─────────────────────────────────────────────────────────────────── */
+.ds-alert__body {
+  flex:        1 0 0;
+  display:     flex;
+  align-items: center;
+  align-self:  stretch;
+  min-width:   0;                                      /* allow text truncation   */
+}
+
+/* ── Content row (icon + text) ────────────────────────────────────────────── */
+.ds-alert__content {
+  flex:        1 0 0;
+  display:     flex;
+  align-items: center;
+  gap:         var(--spacing-md);                      /* 8px */
+  padding:     var(--spacing-md) 0                     /* 8px top/bottom …        */
+               var(--spacing-md) var(--spacing-xl);    /* … 8px 16px              */
+  min-width:   0;
+  overflow:    hidden;
+}
+
+/* When a title is present, top-align icon with first line of text */
+.ds-alert--has-title .ds-alert__content {
+  align-items: flex-start;
+}
+
+/* ── Icon ─────────────────────────────────────────────────────────────────── */
+.ds-alert__icon {
+  display:     inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  width:       20px;
+  height:      20px;
+  color:       inherit;                                /* currentColor in SVG     */
+}
+
+/* Optical top-align when icon sits next to title+description stack */
+.ds-alert--has-title .ds-alert__icon {
+  margin-top: 1px;
+}
+
+/* ── Text ─────────────────────────────────────────────────────────────────── */
+.ds-alert__text {
+  flex:        1 0 0;
+  min-width:   0;
+  display:     flex;
+  flex-direction: column;
+  gap:         2px;
+}
+
+.ds-alert__title {
+  margin:         0;
+  font-family:    var(--font-family-display);
+  font-weight:    var(--font-weight-semibold);
+  font-size:      var(--font-size-body-sm);            /* 14px */
+  line-height:    var(--line-height-body-sm);          /* 20px */
+  letter-spacing: var(--letter-spacing-body-sm);       /* -0.42px */
+  color:          inherit;
+}
+
+.ds-alert__description {
+  margin:         0;
+  font-family:    var(--font-family-display);
+  font-weight:    var(--font-weight-regular);
+  font-size:      var(--font-size-body-sm);            /* 14px */
+  line-height:    var(--line-height-body-sm);          /* 20px */
+  letter-spacing: var(--letter-spacing-body-sm);       /* -0.42px */
+  color:          inherit;
+}
+
+/* ── Close button ─────────────────────────────────────────────────────────── */
+.ds-alert__close {
+  display:          flex;
+  align-items:      center;
+  justify-content:  center;
+  flex-shrink:      0;
+  width:            20px;
+  height:           20px;
+  padding:          0;
+  background:       none;
+  border:           none;
+  border-radius:    var(--radius-xs);                  /* 4px */
+  cursor:           pointer;
+  color:            inherit;
+  opacity:          0.7;
+  transition:       opacity 0.15s ease, background 0.15s ease;
+}
+
+.ds-alert__close:hover {
+  opacity:    1;
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.ds-alert__close:focus-visible {
+  outline:    2px solid currentColor;
+  outline-offset: 2px;
+}
+
+
+/* ══════════════════════════════════════════════════════
+   VARIANTS
+   Each sets: background, border-color, color
+   (icon and text both inherit `color` via currentColor)
+   ══════════════════════════════════════════════════════ */
+
+/* ── Info (sky) ───────────────────────────────────────────────────────────── */
+.ds-alert--info {
+  background:   var(--color-alert-info-bg);
+  border-color: var(--color-alert-info-border);
+  color:        var(--color-alert-info-text);
+}
+
+/* ── Warning (amber) ──────────────────────────────────────────────────────── */
+.ds-alert--warning {
+  background:   var(--color-alert-warning-bg);
+  border-color: var(--color-alert-warning-border);
+  color:        var(--color-alert-warning-text);
+}
+
+/* ── Error (red) ──────────────────────────────────────────────────────────── */
+.ds-alert--error {
+  background:   var(--color-alert-error-bg);
+  border-color: var(--color-alert-error-border);
+  color:        var(--color-alert-error-text);
+}
+
+/* ── Success (green) ──────────────────────────────────────────────────────── */
+.ds-alert--success {
+  background:   var(--color-alert-success-bg);
+  border-color: var(--color-alert-success-border);
+  color:        var(--color-alert-success-text);
+}
+
+/* ── Discovery / Brand (purple) ───────────────────────────────────────────── */
+.ds-alert--discovery {
+  background:   var(--color-alert-discovery-bg);
+  border-color: var(--color-alert-discovery-border);
+  color:        var(--color-alert-discovery-text);
+}
+
+/* ── Neutral (zinc/gray) ──────────────────────────────────────────────────── */
+.ds-alert--neutral {
+  background:   var(--color-alert-neutral-bg);
+  border-color: var(--color-alert-neutral-border);
+  color:        var(--color-alert-neutral-text);
+}

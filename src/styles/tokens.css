@@ -1,0 +1,132 @@
+:root {
+  /* ── Legacy tokens (preserved for backward compat) ─────────────────── */
+  --color-primary: #2563eb;
+  --color-primary-hover: #1547ce;
+  --space-md: 12px;
+
+  /* ── Subscribili Design System v1.2 ────────────────────────────────── */
+
+  /* Gradient — Primary brand (sky-500 → sky-300 at 79.17°) */
+  --color-gradient-start:       rgb(14, 165, 233);   /* sky-500 */
+  --color-gradient-end:         rgb(56, 189, 248);   /* sky-300 */
+  --color-gradient-angle:       79.17deg;
+  --color-gradient-start-hover: rgb(2, 132, 199);    /* sky-600 */
+  --color-gradient-end-hover:   rgb(14, 165, 233);   /* sky-500 */
+
+  /* Button backgrounds */
+  --color-btn-outline-gray-bg:  #ffffff;
+  --color-btn-outline-bg:       #ffffff;
+  --color-btn-tertiary-bg:      transparent;
+  --color-btn-link-bg:          transparent;
+
+  /* Button borders */
+  --color-btn-outline-gray-border: #d1d5db;            /* gray-300 */
+  --color-btn-outline-border:      rgb(14, 165, 233);  /* sky-500 */
+
+  /* Button text */
+  --color-btn-primary-text:       #ffffff;
+  --color-btn-outline-gray-text:  #1f2937;             /* gray-800 */
+  --color-btn-outline-text:       rgb(14, 165, 233);   /* sky-500 */
+  --color-btn-tertiary-text:      #1f2937;             /* gray-800 */
+  --color-btn-link-text:          rgb(14, 165, 233);   /* sky-500 */
+  --color-btn-link-text-hover:    rgb(2, 132, 199);    /* sky-600 */
+
+  /* Hover backgrounds */
+  --color-btn-outline-gray-bg-hover: #f9fafb;          /* gray-50  */
+  --color-btn-outline-bg-hover:      #f0f9ff;          /* sky-50   */
+  --color-btn-tertiary-bg-hover:     #f3f4f6;          /* gray-100 */
+
+  /* Destructive — Primary */
+  --color-btn-destructive-bg:       #ef4444;           /* red-500 */
+  --color-btn-destructive-bg-hover: #dc2626;           /* red-600 */
+  --color-btn-destructive-text:     #ffffff;
+
+  /* Destructive — Secondary (Figma "Secondary" hierarchy, destructive only) */
+  --color-btn-secondary-dest-bg:        #fff7f7;       /* red-50 tint  */
+  --color-btn-secondary-dest-bg-hover:  #fee2e2;       /* red-100      */
+  --color-btn-secondary-dest-border:    #fca5a5;       /* red-300      */
+  --color-btn-secondary-dest-text:      #dc2626;       /* red-600      */
+
+  /* Destructive — Tertiary */
+  --color-btn-tertiary-dest-text:      #ef4444;        /* red-500 */
+  --color-btn-tertiary-dest-bg-hover:  #fef2f2;        /* red-50  */
+
+  /* Focus rings */
+  --color-focus-ring:             rgb(14, 165, 233);   /* sky-500 */
+  --color-focus-ring-destructive: #ef4444;             /* red-500 */
+
+  /* ── Spacing scale ──────────────────────────────────────────────────── */
+  --spacing-none: 0px;
+  --spacing-xxs:  2px;
+  --spacing-xs:   4px;
+  --spacing-sm:   6px;
+  --spacing-md:   8px;
+  --spacing-lg:   12px;
+  --spacing-xl:   16px;
+  --spacing-2xl:  20px;
+
+  /* ── Radius ─────────────────────────────────────────────────────────── */
+  --radius-sm: 6px;
+  --radius-md: 8px;
+
+  /* ── Typography ─────────────────────────────────────────────────────── */
+  --font-family-display:   'Inter', 'Inter Display', system-ui, sans-serif;
+  --font-weight-regular:   400;
+
+  --font-size-btn-sm:      12px;
+  --font-size-btn-md:      14px;
+  --font-size-btn-lg:      16px;
+
+  --line-height-btn-sm:    16px;
+  --line-height-btn-md:    20px;
+  --line-height-btn-lg:    24px;
+
+  --letter-spacing-btn-sm: -0.12px;
+  --letter-spacing-btn-md: -0.14px;
+  --letter-spacing-btn-lg: -0.16px;
+
+  /* ── Radius (extended) ──────────────────────────────────────────────── */
+  --radius-xs: 4px;
+
+  /* ── Body typography ────────────────────────────────────────────────── */
+  /* body-sm = 14px / 20px / -3% — used by Alert, inputs, labels       */
+  --font-size-body-sm:       14px;
+  --line-height-body-sm:     20px;
+  --letter-spacing-body-sm:  -0.42px;   /* -3% at 14px */
+  --font-weight-semibold:    600;
+
+  /* ── Alert tokens ───────────────────────────────────────────────────── */
+  /* Info */
+  --color-alert-info-bg:      #f0f9ff;  /* sky-50   */
+  --color-alert-info-border:  #0ea5e9;  /* sky-500  */
+  --color-alert-info-text:    #0284c7;  /* sky-600  */
+
+  /* Warning */
+  --color-alert-warning-bg:     #fffbeb; /* amber-50  */
+  --color-alert-warning-border: #f59e0b; /* amber-400 */
+  --color-alert-warning-text:   #b45309; /* amber-700 */
+
+  /* Error */
+  --color-alert-error-bg:     #fef2f2;  /* red-50   */
+  --color-alert-error-border: #ef4444;  /* red-500  */
+  --color-alert-error-text:   #ef4444;  /* red-500  */
+
+  /* Success */
+  --color-alert-success-bg:     #f0fdf4; /* green-50  */
+  --color-alert-success-border: #22c55e; /* green-500 */
+  --color-alert-success-text:   #15803d; /* green-700 */
+
+  /* Discovery (Brand / Purple) */
+  --color-alert-discovery-bg:     #faf5ff; /* purple-50  */
+  --color-alert-discovery-border: #955ac1; /* purple-600 */
+  --color-alert-discovery-text:   #7b40a7; /* purple-700 */
+
+  /* Neutral */
+  --color-alert-neutral-bg:     #f4f4f5; /* zinc-100 */
+  --color-alert-neutral-border: #71717a; /* zinc-500 */
+  --color-alert-neutral-text:   #52525b; /* zinc-600 */
+
+  /* ── Transitions ────────────────────────────────────────────────────── */
+  --transition-btn: background 0.15s ease, border-color 0.15s ease,
+                    color 0.15s ease, box-shadow 0.15s ease;
+}

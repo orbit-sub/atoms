@@ -1,0 +1,306 @@
+/*
+ * ds-btn — Design System Button
+ * Based on: Subscribili Design System v1.2 | node 567:5542
+ *
+ * BEM structure:
+ *   .ds-btn                      Block
+ *   .ds-btn--{variant}           Variant modifier
+ *   .ds-btn--{size}              Size modifier
+ *   .ds-btn--destructive         Destructive palette modifier
+ *   .ds-btn--icon-only           Icon-only mode modifier
+ *   .ds-btn__label               Label element
+ *   .ds-btn__icon                Icon wrapper element
+ *   .ds-btn__icon--lead          Lead icon position
+ *   .ds-btn__icon--trail         Trail icon position
+ */
+
+/* ── Reset: override default browser <button> styles ─────────────────────── */
+.ds-btn {
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+/* ── Base ─────────────────────────────────────────────────────────────────── */
+.ds-btn {
+  display:         inline-flex;
+  align-items:     center;
+  justify-content: center;
+  gap:             var(--spacing-md);
+  border:          none;
+  border-radius:   var(--radius-md);
+  cursor:          pointer;
+  font-family:     var(--font-family-display);
+  font-weight:     var(--font-weight-regular);
+  overflow:        hidden;
+  text-decoration: none;
+  white-space:     nowrap;
+  outline:         none;
+  transition:      var(--transition-btn);
+  box-sizing:      border-box;
+}
+
+.ds-btn__icon {
+  display:     inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.ds-btn__label {
+  flex-shrink: 0;
+}
+
+/* ── Disabled ─────────────────────────────────────────────────────────────── */
+.ds-btn:disabled {
+  cursor:         not-allowed;
+  opacity:        0.4;
+  pointer-events: none;
+}
+
+
+/* ══════════════════════════════════════════════════════
+   SIZES
+   Figma heights: sm=32 md=40 lg=48 xl=56
+   Vertical padding derived from: total_h = (py × 2) + line-height
+   ══════════════════════════════════════════════════════ */
+
+/* sm — 32px: py(8) + lh(16) + py(8) */
+.ds-btn--sm {
+  padding:        var(--spacing-md) var(--spacing-lg);   /* 8px 12px */
+  min-width:      80px;
+  min-height:     32px;
+  border-radius:  var(--radius-sm);
+  font-size:      var(--font-size-btn-sm);
+  line-height:    var(--line-height-btn-sm);
+  letter-spacing: var(--letter-spacing-btn-sm);
+  gap:            var(--spacing-xs);
+}
+
+.ds-btn--sm .ds-btn__icon {
+  width:  16px;
+  height: 16px;
+}
+
+/* md — 40px: py(10) + lh(20) + py(10)
+   10px = outer(8) + inner-item-padding(2) from Figma layout */
+.ds-btn--md {
+  padding:        calc(var(--spacing-md) + var(--spacing-xxs)) var(--spacing-lg); /* 10px 12px */
+  min-width:      100px;
+  min-height:     40px;
+  font-size:      var(--font-size-btn-md);
+  line-height:    var(--line-height-btn-md);
+  letter-spacing: var(--letter-spacing-btn-md);
+  gap:            var(--spacing-md);
+}
+
+.ds-btn--md .ds-btn__icon {
+  width:  20px;
+  height: 20px;
+}
+
+/* lg — 48px: py(12) + lh(24) + py(12) */
+.ds-btn--lg {
+  padding:        var(--spacing-lg) var(--spacing-xl);   /* 12px 16px */
+  min-width:      100px;
+  min-height:     48px;
+  font-size:      var(--font-size-btn-lg);
+  line-height:    var(--line-height-btn-lg);
+  letter-spacing: var(--letter-spacing-btn-lg);
+  gap:            var(--spacing-md);
+}
+
+.ds-btn--lg .ds-btn__icon {
+  width:  20px;
+  height: 20px;
+}
+
+/* xl — 56px: py(16) + lh(24) + py(16) */
+.ds-btn--xl {
+  padding:        var(--spacing-xl) var(--spacing-2xl);  /* 16px 20px */
+  min-width:      100px;
+  min-height:     56px;
+  font-size:      var(--font-size-btn-lg);
+  line-height:    var(--line-height-btn-lg);
+  letter-spacing: var(--letter-spacing-btn-lg);
+  gap:            var(--spacing-md);
+}
+
+.ds-btn--xl .ds-btn__icon {
+  width:  24px;
+  height: 24px;
+}
+
+
+/* ══════════════════════════════════════════════════════
+   ICON-ONLY
+   Square dimensions; no min-width; padding removed.
+   ══════════════════════════════════════════════════════ */
+.ds-btn--icon-only {
+  min-width: unset;
+}
+
+.ds-btn--icon-only.ds-btn--sm {
+  width:   32px;
+  height:  32px;
+  padding: 0;
+}
+
+.ds-btn--icon-only.ds-btn--md {
+  width:   40px;
+  height:  40px;
+  padding: 0;
+}
+
+.ds-btn--icon-only.ds-btn--lg {
+  width:   48px;
+  height:  48px;
+  padding: 0;
+}
+
+.ds-btn--icon-only.ds-btn--xl {
+  width:   56px;
+  height:  56px;
+  padding: 0;
+}
+
+
+/* ══════════════════════════════════════════════════════
+   VARIANTS — Non-destructive
+   ══════════════════════════════════════════════════════ */
+
+/* ── Primary ──────────────────────────────────────────────────────────────── */
+.ds-btn--primary {
+  background: linear-gradient(
+    var(--color-gradient-angle),
+    var(--color-gradient-start) 12.66%,
+    var(--color-gradient-end)   102.86%
+  );
+  color:  var(--color-btn-primary-text);
+  border: none;
+}
+
+.ds-btn--primary:hover:not(:disabled) {
+  background: linear-gradient(
+    var(--color-gradient-angle),
+    var(--color-gradient-start-hover) 12.66%,
+    var(--color-gradient-end-hover)   102.86%
+  );
+}
+
+.ds-btn--primary:focus-visible:not(:disabled) {
+  box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--color-focus-ring);
+}
+
+/* ── Secondary Outline Gray ───────────────────────────────────────────────── */
+.ds-btn--outline-gray {
+  background: var(--color-btn-outline-gray-bg);
+  color:      var(--color-btn-outline-gray-text);
+  border:     1px solid var(--color-btn-outline-gray-border);
+}
+
+.ds-btn--outline-gray:hover:not(:disabled) {
+  background: var(--color-btn-outline-gray-bg-hover);
+}
+
+.ds-btn--outline-gray:focus-visible:not(:disabled) {
+  box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--color-focus-ring);
+}
+
+/* ── Secondary Outline (Brand) ────────────────────────────────────────────── */
+.ds-btn--outline {
+  background: var(--color-btn-outline-bg);
+  color:      var(--color-btn-outline-text);
+  border:     1px solid var(--color-btn-outline-border);
+}
+
+.ds-btn--outline:hover:not(:disabled) {
+  background: var(--color-btn-outline-bg-hover);
+}
+
+.ds-btn--outline:focus-visible:not(:disabled) {
+  box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--color-focus-ring);
+}
+
+/* ── Tertiary (Ghost) ─────────────────────────────────────────────────────── */
+.ds-btn--tertiary {
+  background: var(--color-btn-tertiary-bg);
+  color:      var(--color-btn-tertiary-text);
+  border:     none;
+}
+
+.ds-btn--tertiary:hover:not(:disabled) {
+  background: var(--color-btn-tertiary-bg-hover);
+}
+
+.ds-btn--tertiary:focus-visible:not(:disabled) {
+  box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--color-focus-ring);
+}
+
+/* ── Link (Tertiary Link) ─────────────────────────────────────────────────── */
+.ds-btn--link {
+  background: var(--color-btn-link-bg);
+  color:      var(--color-btn-link-text);
+  border:     none;
+  min-width:  unset;
+}
+
+.ds-btn--link:hover:not(:disabled) {
+  color:           var(--color-btn-link-text-hover);
+  text-decoration: underline;
+}
+
+.ds-btn--link:focus-visible:not(:disabled) {
+  box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--color-focus-ring);
+}
+
+/* ── Secondary (Destructive-only hierarchy from Figma) ────────────────────── */
+/* Figma "Secondary" hierarchy only exists in destructive context.
+   This variant is inherently a destructive secondary button. */
+.ds-btn--secondary {
+  background: var(--color-btn-secondary-dest-bg);
+  color:      var(--color-btn-secondary-dest-text);
+  border:     1px solid var(--color-btn-secondary-dest-border);
+}
+
+.ds-btn--secondary:hover:not(:disabled) {
+  background:   var(--color-btn-secondary-dest-bg-hover);
+  border-color: #f87171; /* red-400 */
+}
+
+.ds-btn--secondary:focus-visible:not(:disabled) {
+  box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--color-focus-ring-destructive);
+}
+
+
+/* ══════════════════════════════════════════════════════
+   DESTRUCTIVE MODIFIERS
+   Override variant colours for primary and tertiary.
+   (secondary is always destructive, handled above)
+   ══════════════════════════════════════════════════════ */
+
+/* Primary + Destructive */
+.ds-btn--primary.ds-btn--destructive {
+  background: var(--color-btn-destructive-bg);
+  color:      var(--color-btn-destructive-text);
+  border:     none;
+}
+
+.ds-btn--primary.ds-btn--destructive:hover:not(:disabled) {
+  background: var(--color-btn-destructive-bg-hover);
+}
+
+.ds-btn--primary.ds-btn--destructive:focus-visible:not(:disabled) {
+  box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--color-focus-ring-destructive);
+}
+
+/* Tertiary + Destructive */
+.ds-btn--tertiary.ds-btn--destructive {
+  color: var(--color-btn-tertiary-dest-text);
+}
+
+.ds-btn--tertiary.ds-btn--destructive:hover:not(:disabled) {
+  background: var(--color-btn-tertiary-dest-bg-hover);
+}
+
+.ds-btn--tertiary.ds-btn--destructive:focus-visible:not(:disabled) {
+  box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--color-focus-ring-destructive);
+}
