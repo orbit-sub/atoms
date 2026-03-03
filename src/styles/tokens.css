@@ -70,7 +70,7 @@
   --radius-md: 8px;
 
   /* ── Typography ─────────────────────────────────────────────────────── */
-  --font-family-display:   'Inter', 'Inter Display', system-ui, sans-serif;
+  --font-family-display:   'DM Sans', system-ui, sans-serif;
   --font-weight-regular:   400;
 
   --font-size-btn-sm:      12px;
