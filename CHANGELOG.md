@@ -9,6 +9,15 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [0.0.1] — 2026-03-03
+
+### Changed
+- **Typography** — switched display font from Inter to DM Sans (`--font-family-display` in `tokens.css`)
+- `src/styles/globals.css` — added Google Fonts `@import` for DM Sans (Storybook)
+- `apps/docs/src/app/layout.tsx` — loads DM Sans via `next/font/google` for optimised delivery in the demo app
+
+---
+
 ## [0.0.0] — 2026-03-03
 
 ### Added
