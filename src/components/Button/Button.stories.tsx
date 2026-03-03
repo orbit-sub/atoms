@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Button } from './Button'
-import type { ButtonProps } from './Button'
 
 // ── Icons (inline SVG — no extra dependencies) ────────────────────────────
 
@@ -36,7 +35,7 @@ const TrashIcon = () => (
 
 // ── Meta ──────────────────────────────────────────────────────────────────
 
-const meta: Meta<typeof Button> = {
+const meta = {
   title: 'Atoms/Button',
   component: Button,
   parameters: {
@@ -92,6 +91,11 @@ Supports 6 visual hierarchies, 4 sizes, destructive palette, disabled state, and
       description: 'Square icon-only button. Pass icon via leadIcon. Requires aria-label.',
       table: { defaultValue: { summary: 'false' } },
     },
+    asChild: {
+      control: 'boolean',
+      description: 'Renders the button as its child element (Radix Slot pattern)',
+      table: { defaultValue: { summary: 'false' } },
+    },
     leadIcon: { control: false },
     trailIcon: { control: false },
     onClick: { action: 'clicked' },
@@ -104,10 +108,12 @@ Supports 6 visual hierarchies, 4 sizes, destructive palette, disabled state, and
     disabled: false,
     iconOnly: false,
   },
-}
+} satisfies Meta<typeof Button>
 
+// `satisfies` is on the const declaration above — Storybook's indexer requires
+// `export default <identifier>` (not `export default <expr> satisfies <type>`).
 export default meta
-type Story = StoryObj<ButtonProps>
+type Story = StoryObj<typeof meta>
 
 
 // ══════════════════════════════════════════════════════

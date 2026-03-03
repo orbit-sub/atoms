@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+/*
+ * Import atoms design tokens.
+ * In this monorepo, we reference the source directly.
+ * A published consumer would do: @import "atoms/globals.css"
+ * after atoms ships a CSS entry in its package exports.
+ */
+@import "../../../../src/styles/tokens.css";
+
+/*
+ * Tell Tailwind to scan atoms component source for class names
+ * so gradient, focus-ring, and variant utilities are included.
+ */
+@source "../../../../src/components";
+@source "../../../../src/lib";
+
+/* ── Tailwind v4 theme aliases (mirrors atoms/src/styles/globals.css) ──────── */
+
+@theme inline {
+  /* Typography */
+  --font-family-display: var(--font-family-display);
+
+  /* Border Radius */
+  --radius-xs: var(--radius-xs);
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+
+  /* Brand */
+  --color-brand:       var(--color-gradient-start);
+  --color-brand-hover: var(--color-gradient-start-hover);
+
+  /* Focus rings */
+  --color-ring:             var(--color-focus-ring);
+  --color-ring-destructive: var(--color-focus-ring-destructive);
+
+  /* Destructive palette */
+  --color-destructive:       var(--color-btn-destructive-bg);
+  --color-destructive-hover: var(--color-btn-destructive-bg-hover);
+  --color-destructive-fg:    var(--color-btn-destructive-text);
+
+  /* Alert — Info */
+  --color-alert-info-bg:     var(--color-alert-info-bg);
+  --color-alert-info-border: var(--color-alert-info-border);
+  --color-alert-info-fg:     var(--color-alert-info-text);
+
+  /* Alert — Warning */
+  --color-alert-warning-bg:     var(--color-alert-warning-bg);
+  --color-alert-warning-border: var(--color-alert-warning-border);
+  --color-alert-warning-fg:     var(--color-alert-warning-text);
+
+  /* Alert — Error */
+  --color-alert-error-bg:     var(--color-alert-error-bg);
+  --color-alert-error-border: var(--color-alert-error-border);
+  --color-alert-error-fg:     var(--color-alert-error-text);
+
+  /* Alert — Success */
+  --color-alert-success-bg:     var(--color-alert-success-bg);
+  --color-alert-success-border: var(--color-alert-success-border);
+  --color-alert-success-fg:     var(--color-alert-success-text);
+
+  /* Alert — Discovery */
+  --color-alert-discovery-bg:     var(--color-alert-discovery-bg);
+  --color-alert-discovery-border: var(--color-alert-discovery-border);
+  --color-alert-discovery-fg:     var(--color-alert-discovery-text);
+
+  /* Alert — Neutral */
+  --color-alert-neutral-bg:     var(--color-alert-neutral-bg);
+  --color-alert-neutral-border: var(--color-alert-neutral-border);
+  --color-alert-neutral-fg:     var(--color-alert-neutral-text);
+}
+
+/* ── Custom utilities: primary button gradient ───────────────────────────── */
+
+@utility btn-gradient {
+  background: linear-gradient(
+    var(--color-gradient-angle),
+    var(--color-gradient-start) 12.66%,
+    var(--color-gradient-end)   102.86%
+  );
+}
+
+@utility btn-gradient-hover {
+  background: linear-gradient(
+    var(--color-gradient-angle),
+    var(--color-gradient-start-hover) 12.66%,
+    var(--color-gradient-end-hover)   102.86%
+  );
+}

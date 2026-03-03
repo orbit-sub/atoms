@@ -1,10 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Alert } from './Alert'
-import type { AlertProps } from './Alert'
 
 // ── Meta ──────────────────────────────────────────────────────────────────
 
-const meta: Meta<typeof Alert> = {
+const meta = {
   title: 'Atoms/Alert',
   component: Alert,
   parameters: {
@@ -56,10 +55,12 @@ Inline banner with a 2px left-border accent. Supports 6 semantic variants, an op
     variant: 'info',
     dismissible: false,
   },
-}
+} satisfies Meta<typeof Alert>
 
+// `satisfies` is on the const declaration above — Storybook's indexer requires
+// `export default <identifier>` (not `export default <expr> satisfies <type>`).
 export default meta
-type Story = StoryObj<AlertProps>
+type Story = StoryObj<typeof meta>
 
 
 // ══════════════════════════════════════════════════════
