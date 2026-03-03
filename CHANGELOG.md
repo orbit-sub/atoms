@@ -9,7 +9,7 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
-## [0.0.1] — 2026-03-03
+## [0.0.1] — March 03, 2026
 
 ### Changed
 - **Typography** — switched display font from Inter to DM Sans (`--font-family-display` in `tokens.css`)
@@ -18,7 +18,7 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
-## [0.0.0] — 2026-03-03
+## [0.0.0] — March 03, 2026
 
 ### Added
 
@@ -71,7 +71,7 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
-## [0.0.0-alpha.1] — 2026-02-XX
+## [0.0.0-alpha.1] — March 03, 2026
 
 ### Added
 - **Button** component — BEM CSS, 6 variants, 4 sizes
@@ -82,7 +82,7 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
-## [0.0.0-alpha.0] — 2026-02-XX
+## [0.0.0-alpha.0] — March 03, 2026
 
 ### Added
 - Initial React 19 + TypeScript + Vite project scaffold
