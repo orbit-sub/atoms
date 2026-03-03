@@ -36,5 +36,8 @@ jobs:
           # On PRs: return as soon as the build is uploaded so CI doesn't
           # block — Chromatic reports results back to GitHub directly.
           exitOnceUploaded: ${{ github.event_name == 'pull_request' }}
-          # Fail the workflow if Chromatic detects visual regressions
+          # Auto-accept changes on main (branch is the source of truth).
+          # On PRs, visual diffs still require manual review in Chromatic.
+          autoAcceptChanges: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+          # Fail the workflow if Chromatic detects visual regressions on PRs
           exitZeroOnChanges: false
