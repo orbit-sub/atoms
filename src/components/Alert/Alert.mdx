@@ -1,0 +1,131 @@
+import { Meta, Canvas, Controls, ArgTypes } from '@storybook/addon-docs/blocks'
+import * as AlertStories from './Alert.stories'
+
+<Meta of={AlertStories} />
+
+# Alert
+
+An inline banner used to surface contextual feedback without interrupting the user's flow. Features a **2 px left-border accent**, **6 semantic variants**, an optional title, and a dismissible close button.
+
+---
+
+## Playground
+
+Use the controls panel below to explore all prop combinations interactively.
+
+<Canvas of={AlertStories.Playground} />
+<Controls of={AlertStories.Playground} />
+
+---
+
+## Variants
+
+Six variants map directly to the Figma "state" property. Each carries a distinct background, border, and text color sourced from design tokens.
+
+### Info
+
+Default state. Use for neutral informational messages that don't require immediate action.
+
+<Canvas of={AlertStories.Info} />
+
+### Warning
+
+Use when something needs the user's attention but isn't blocking yet.
+
+<Canvas of={AlertStories.Warning} />
+
+### Error
+
+Use for failures, validation errors, or blocked operations that require correction.
+
+<Canvas of={AlertStories.Error} />
+
+### Success
+
+Use to confirm a completed action or a positive outcome.
+
+<Canvas of={AlertStories.Success} />
+
+### Discovery
+
+Brand/purple palette. Use to announce new features or highlight discovery moments.
+
+<Canvas of={AlertStories.Discovery} />
+
+### Neutral
+
+Low-emphasis alerts for non-critical information or reminders.
+
+<Canvas of={AlertStories.Neutral} />
+
+---
+
+## Dismissible
+
+Add `dismissible` to render a close (×) button on the right. Pair with `onClose` to handle the dismiss action.
+
+```tsx
+<Alert
+  variant="info"
+  description="Your session expires in 5 minutes."
+  dismissible
+  onClose={() => setVisible(false)}
+/>
+```
+
+<Canvas of={AlertStories.AllVariantsDismissible} />
+
+---
+
+## With Title
+
+Add a `title` prop to render a bold heading above the description. Useful when the alert needs a scannable headline.
+
+<Canvas of={AlertStories.WithTitle} />
+<Canvas of={AlertStories.WithTitleDismissible} />
+
+---
+
+## Overview
+
+All 6 variants side by side — matches the Figma component frame exactly.
+
+<Canvas of={AlertStories.AllVariants} />
+
+All 6 variants with title and close button.
+
+<Canvas of={AlertStories.AllVariantsWithTitle} />
+
+---
+
+## Props
+
+<ArgTypes of={AlertStories} />
+
+---
+
+## Anatomy
+
+```
+┌──┬────────────────────────────────────────┬───┐
+│  │  [icon]  [Title (optional)]            │ × │
+│  │          [Description]                 │   │
+└──┴────────────────────────────────────────┴───┘
+ ↑ 2px left border                          ↑ close button (dismissible only)
+```
+
+| Slot | Details |
+|------|---------|
+| `icon` | Defaults to an info-circle SVG. Override with any `ReactNode` via the `icon` prop. |
+| `title` | Optional bold heading — `AlertTitle` sub-component, `font-semibold text-sm`. |
+| `description` | Required message text — `AlertDescription` sub-component, `font-normal text-sm`. |
+| Close button | Rendered when `dismissible={true}`. Calls `onClose` on click. |
+
+---
+
+## Accessibility
+
+- Root element uses `role="alert"` so screen readers announce the content immediately on mount.
+- The close button has `aria-label="Dismiss alert"` and is keyboard-focusable.
+- The default icon SVG is `aria-hidden="true"` — it is decorative; meaning comes from the text.
+- Color alone is never the sole indicator of variant — each variant also differs in border and background tone.

@@ -1,0 +1,142 @@
+import { Meta, Canvas, Controls, ArgTypes } from '@storybook/addon-docs/blocks'
+import * as CheckoutSummaryStories from './CheckoutSummary.stories'
+
+<Meta of={CheckoutSummaryStories} />
+
+# CheckoutSummary
+
+A checkout sidebar card that summarises dental plan details, per-subscriber pricing, order totals, T&C consent, and CTA actions. Maps to Figma node **6186:2821** in the Subscribili Design System v1.2.
+
+---
+
+## Playground
+
+<Canvas of={CheckoutSummaryStories.Playground} />
+<Controls of={CheckoutSummaryStories.Playground} />
+
+---
+
+## Subscriber configurations
+
+### Single member
+
+A minimal checkout with just the primary subscriber.
+
+<Canvas of={CheckoutSummaryStories.SingleMember} />
+
+### Family plan
+
+The primary member plus two dependents — matches the Figma frame exactly.
+
+<Canvas of={CheckoutSummaryStories.FamilyPlan} />
+
+---
+
+## Promo Code
+
+Pass an `onPromoCode` handler to show the "Have a Promo Code?" link in the totals section. Omit it to hide the link.
+
+<Canvas of={CheckoutSummaryStories.WithPromoCode} />
+
+---
+
+## Terms & Conditions
+
+### Unchecked
+
+<Canvas of={CheckoutSummaryStories.TermsUnchecked} />
+
+### Accepted
+
+<Canvas of={CheckoutSummaryStories.TermsAccepted} />
+
+### Paperless notice
+
+Set `paperlessEnabled` to show the paperless communication confirmation below the T&C checkbox.
+
+<Canvas of={CheckoutSummaryStories.WithPaperless} />
+
+---
+
+## Complete views
+
+### Figma exact
+
+Pixel-faithful reproduction of node 6186:2821 — paperless enabled, T&C unchecked.
+
+<Canvas of={CheckoutSummaryStories.FigmaExact} />
+
+### All features active
+
+T&C accepted, paperless enabled, promo link visible.
+
+<Canvas of={CheckoutSummaryStories.FullyComplete} />
+
+---
+
+## Anatomy
+
+```
+┌─────────────────────────────────────────┐
+│  Checkout Summary                        │  ← title (18px medium)
+│─────────────────────────────────────────│  ← divider
+│  [📍]  Provider's Location              │
+│        1st Family Dental…               │
+│  [🧾]  Billing Frequency                │  ← meta info rows
+│        Annual Billed Monthly            │
+│  [📅]  Subscription Period              │
+│        Mar 18, 2025 – Mar 18, 2026      │
+│─────────────────────────────────────────│
+│  Smith Jones          Primary Member    │
+│  Plan Name: Espire Adult                │  ← primary subscriber card
+│  ──────────────────────────────────     │    (sky-50 background)
+│  Annual Cost                  $292.42   │
+│  Plan Credit                  -$72.42   │
+│─────────────────────────────────────────│
+│  Emily Jones          Dependent 1       │
+│  Plan Name: Espire Child                │  ← dependent card(s)
+│  ──────────────────────────────────     │    (gray-50 background)
+│  Annual Cost                  $199.00   │
+│  Plan Credit                   -$59.00  │
+│═════════════════════════════════════════│  ← border-t (gray-300)
+│  Subtotal                      $500.00  │
+│  Processing Fees                  $8.56 │
+│  Have a Promo Code?                     │
+│ ─────────────────────────────────────── │  ← thin divider
+│  Amount Due                   $508.56   │  ← 18px + 20px success green
+│─────────────────────────────────────────│
+│  ☐  The primary member has reviewed…   │  ← T&C checkbox
+│  ✓  Paperless communication enabled…   │  ← paperless notice (optional)
+│─────────────────────────────────────────│
+│  [    Start Subscription (gradient)   ] │
+│  [        Save Draft (outline)        ] │
+└─────────────────────────────────────────┘
+```
+
+---
+
+## SubscriberEntry type
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `name` | `string` | Member's full name |
+| `role` | `string` | e.g. `"Primary Member"` \| `"Dependent 1"` |
+| `planName` | `string` | Dental plan name e.g. `"Espire Adult"` |
+| `annualCost` | `string` | Formatted annual cost e.g. `"$292.42"` |
+| `planCredit` | `string` | Formatted credit (negative) e.g. `"-$72.42"` |
+| `isPrimary` | `boolean` | Uses sky-50 background + sky-200 divider |
+
+---
+
+## Props
+
+<ArgTypes of={CheckoutSummaryStories} />
+
+---
+
+## Accessibility
+
+- All icon SVGs are `aria-hidden="true"` — meaning is conveyed by adjacent text.
+- The T&C checkbox is a native `<input type="checkbox">` wrapped in a `<label>` — fully keyboard accessible.
+- The "Have a Promo Code?" trigger is a semantic `<button>` with type="button".
+- "Start Subscription" and "Save Draft" use the `Button` atom, which has built-in focus-ring and disabled state support.

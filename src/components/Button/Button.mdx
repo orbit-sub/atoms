@@ -1,0 +1,157 @@
+import { Meta, Canvas, Controls, ArgTypes } from '@storybook/addon-docs/blocks'
+import * as ButtonStories from './Button.stories'
+
+<Meta of={ButtonStories} />
+
+# Button
+
+A versatile action trigger supporting **6 visual hierarchies**, **4 sizes**, destructive states, icon slots, and icon-only mode. Built with CVA + Radix Slot so it renders as any element via `asChild`.
+
+---
+
+## Playground
+
+Use the controls panel below to explore all prop combinations interactively.
+
+<Canvas of={ButtonStories.Playground} />
+<Controls of={ButtonStories.Playground} />
+
+---
+
+## Variants
+
+Six hierarchies map directly to the Figma "Hierarchy" property.
+
+### Primary
+
+Sky-gradient background. The primary call-to-action on any surface.
+
+<Canvas of={ButtonStories.Primary} />
+
+### Secondary — Outline Gray
+
+White background with a 1 px gray-300 border. Pairs with `primary` for secondary actions.
+
+<Canvas of={ButtonStories.OutlineGray} />
+
+### Secondary — Outline
+
+White background with a 1 px brand-color border.
+
+<Canvas of={ButtonStories.Outline} />
+
+### Tertiary
+
+No background, no border — lowest visual weight for supplementary actions.
+
+<Canvas of={ButtonStories.Tertiary} />
+
+### Link
+
+Text-only, brand color, no fixed min-width. Underlines on hover.
+
+<Canvas of={ButtonStories.Link} />
+
+---
+
+## Sizes
+
+Four sizes match Figma's size property exactly. Heights: `sm` 32 px · `md` 40 px · `lg` 48 px · `xl` 56 px.
+
+<Canvas of={ButtonStories.AllSizes} />
+
+| Size | Height | Padding | Min-width | Font size |
+|------|--------|---------|-----------|-----------|
+| `sm` | 32 px | 8 px / 12 px | 80 px | 12 px |
+| `md` | 40 px | 10 px / 12 px | 100 px | 14 px |
+| `lg` | 48 px | 12 px / 16 px | 100 px | 16 px |
+| `xl` | 56 px | 16 px / 20 px | 100 px | 16 px |
+
+---
+
+## Destructive
+
+Use for irreversible, high-impact actions. `destructive` affects `primary` and `tertiary`; `secondary` is always destructive by design.
+
+<Canvas of={ButtonStories.AllDestructive} />
+
+### Primary Destructive
+
+Red solid background. Use before permanently deleting data.
+
+<Canvas of={ButtonStories.PrimaryDestructive} />
+
+### Secondary Destructive
+
+Light-red background with a red border. A softer confirmation for reversible destructive prompts.
+
+<Canvas of={ButtonStories.SecondaryDestructive} />
+
+### Tertiary Destructive
+
+Red ghost button — least prominent destructive action.
+
+<Canvas of={ButtonStories.TertiaryDestructive} />
+
+---
+
+## Disabled
+
+All variants support a `disabled` prop which applies 40 % opacity and `pointer-events: none`.
+
+<Canvas of={ButtonStories.PrimaryDisabled} />
+<Canvas of={ButtonStories.OutlineGrayDisabled} />
+<Canvas of={ButtonStories.TertiaryDisabled} />
+
+---
+
+## Icons
+
+Pass a React node to `leadIcon` or `trailIcon`. Icons are wrapped in a `btn-icon` span that sizes automatically with the button size.
+
+### Lead icon
+
+<Canvas of={ButtonStories.WithLeadIcon} />
+
+### Trail icon
+
+<Canvas of={ButtonStories.WithTrailIcon} />
+
+### Lead + Trail
+
+<Canvas of={ButtonStories.WithBothIcons} />
+
+---
+
+## Icon Only
+
+Set `iconOnly` to render a square button. Pass the icon via `leadIcon` and always include `aria-label` for accessibility.
+
+<Canvas of={ButtonStories.IconOnlyPrimary} />
+<Canvas of={ButtonStories.IconOnlyOutlineGray} />
+<Canvas of={ButtonStories.IconOnlyDestructive} />
+<Canvas of={ButtonStories.IconOnlyAllSizes} />
+
+---
+
+## Overview
+
+All variants across all four sizes at a glance.
+
+<Canvas of={ButtonStories.AllVariants} />
+
+---
+
+## Props
+
+<ArgTypes of={ButtonStories} />
+
+---
+
+## Accessibility
+
+- Renders as a native `<button>` by default — keyboard accessible out of the box.
+- Icon-only buttons **must** include `aria-label` since visible text is hidden.
+- `leadIcon` and `trailIcon` wrappers are `aria-hidden="true"` so screen readers skip the SVG markup.
+- `asChild` delegates the accessible role to the child element (e.g. `<a>` renders as a link).
+- Focus ring uses `focus-visible:ring-2` so keyboard users always see a clear indicator.

@@ -65,6 +65,23 @@
   --color-alert-neutral-bg:     var(--color-alert-neutral-bg);
   --color-alert-neutral-border: var(--color-alert-neutral-border);
   --color-alert-neutral-fg:     var(--color-alert-neutral-text);
+
+  /* ── Semantic text colors ─────────────────────────────────────────────── */
+  --color-text-primary:    var(--color-text-primary);
+  --color-text-secondary:  var(--color-text-secondary);
+  --color-text-tertiary:   var(--color-text-tertiary);
+  --color-text-success:    var(--color-text-success);
+  --color-text-brand:      var(--color-text-brand);
+
+  /* ── Semantic background colors ───────────────────────────────────────── */
+  --color-bg-primary:      var(--color-bg-primary);
+  --color-bg-secondary:    var(--color-bg-secondary);
+  --color-bg-info:         var(--color-bg-info);
+
+  /* ── Semantic border colors ───────────────────────────────────────────── */
+  --color-border-primary:   var(--color-border-primary);
+  --color-border-secondary: var(--color-border-secondary);
+  --color-border-info:      var(--color-border-info);
 }
 
 /* ── Custom utilities: primary button gradient ───────────────────────────── */

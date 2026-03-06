@@ -129,4 +129,21 @@
   /* ── Transitions ────────────────────────────────────────────────────── */
   --transition-btn: background 0.15s ease, border-color 0.15s ease,
                     color 0.15s ease, box-shadow 0.15s ease;
+
+  /* ── Semantic text colors ────────────────────────────────────────────── */
+  --color-text-primary:      #374151;  /* gray-700  */
+  --color-text-secondary:    #4b5563;  /* gray-600  */
+  --color-text-tertiary:     #6b7280;  /* gray-500  */
+  --color-text-success:      #15803d;  /* green-700 */
+  --color-text-brand:        #0284c7;  /* sky-600   */
+
+  /* ── Semantic background colors ─────────────────────────────────────── */
+  --color-bg-primary:        #ffffff;
+  --color-bg-secondary:      #f9fafb;  /* gray-50   */
+  --color-bg-info:           #f0f9ff;  /* sky-50    */
+
+  /* ── Semantic border colors ─────────────────────────────────────────── */
+  --color-border-primary:    #d1d5db;  /* gray-300  */
+  --color-border-secondary:  #ebebef;  /* near-gray */
+  --color-border-info:       #bae6fd;  /* sky-200   */
 }
